@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% extends 'layouts/base.html' %}
+
+    {% block content %}
+    
+    <p>En este apartado se puede vizualizar todas las tareas activas en este momento, tambien se puede eliminar las que no son nesesarias o marcarlas como terminadas</p>
+
+    <h1>Tasks!!</h1>
+    <div id="task">
+        <ul id="task-lu">
+            
+            {% for task in tasks %}
+            <li id="task-li">
+                <div class="task-content">
+                    {% if task.done == False %} <p>⏰</p> {% else %} <p>✅</p> {% endif %}
+                    {{ task.title }}
+                </div>
+                <form method="post" action="{% url 'delete_task' task.id %}">
+                    {% csrf_token %}
+                    <button id="task-btn" type="submit">Delete</button>
+                </form>
+                <form method="post" action="{% url 'done_tasks' task.id %}">
+                    {% csrf_token %}
+                    <button id="done-btn" type="submit">Done</button>
+                </form>
+            </li>
+            <p>Descripcion: {{ task.description }}</p>
+            {%  endfor %}
+        </ul>
+    </div>
+
+    {% endblock %}
+</body>
+</html>

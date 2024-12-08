@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% extends 'layouts/base.html'%}
+
+    {% block content %}
+    <h1>Proyects</h1>
+
+    <p>Este apartado brinda una vizualizacion completa de todos los proyectos que estan activos en este momento</p>
+    <p>This field give to everybody a complete vizualization of all the active proyects at this moment</p>
+
+    <div id="prj">
+        <ul id="prj-ul">
+            {% for project in proyects %}
+
+            <li id="prj-li">{{project.name}} {% if project.done == False %} <p>⏰</p> {% else %} <p>✅</p> {% endif %} </li>
+
+            <div class="btns">
+                <form action="{% url 'delete_projects' project.id %}" method="POST">
+                    {% csrf_token %}
+                    <button id="prj-btn-1">
+                        Delete
+                    </button>
+                </form>
+                <form action="{% url 'done_projects' project.id %}" method="POST">
+                    {% csrf_token %}
+                    <button id="prj-btn-2">
+                        ✅ Done
+                    </button>
+                </form>
+            </div>
+            
+            {%  endfor %}
+        </ul>
+    </div>
+    
+    {% endblock %}
+</body>
+</html>
+
+
+
+

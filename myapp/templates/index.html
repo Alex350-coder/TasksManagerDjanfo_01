@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+</head>
+<body>
+    {% extends 'layouts/base.html' %}
+
+    {% load static %}
+
+    {% block content %}
+
+    <h1>¡Introduction!</h1>
+
+    <img src="{% static '123.jpg' %}" alt="Imagen estatica" height="400" width="400">
+
+    <p>This proyect is oriented to develop a litle web aplication in witch the users can add proyects and make tasks related with its. This does not seach a comnplex work, only set the bases of a basic manage tasks sistem</p>
+
+    <p>Este proyecto esta orientado a desarrollar una pequeña aplicacion web en la cual los usuarios puedan agregar proyectos y tareas relacionadas directamente con estos, no se busca complejidad, solo establecer las bases de un sistema de gestion de tareas basico</p>
+
+    {% endblock %}
+</body>
+</html>
