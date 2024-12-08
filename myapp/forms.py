@@ -7,7 +7,7 @@ class create_new_task(forms.Form):
         required=False,
         widget=forms.Textarea
         )
-    id_Proyect = forms.IntegerField(label="Id del proyecto al que pertenece")
+    id_Project = forms.IntegerField(label="Id del proyecto al que pertenece")
 
 class create_project(forms.Form):
     name = forms.CharField(label="Nonbre del proyecto: ", max_length=150)
